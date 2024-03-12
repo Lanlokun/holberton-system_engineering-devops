@@ -38,7 +38,7 @@ def recurse(subreddit, dictionary, after=None):
     res = requests.get(url,
                        headers=headers,
                        params=params,
-                       allow_redirects=False)
+                       allow_redirects=False, timeout=60)
 
     if res.status_code != 200:
         return None

@@ -10,12 +10,12 @@ if __name__ == "__main__":
 
     userid = sys.argv[1]
     user = '{}users/{}'.format(url, userid)
-    res = requests.get(user)
+    res = requests.get(user, timeout=60)
     json_o = res.json()
     name = json_o.get('username')
 
     todos = '{}todos?userId={}'.format(url, userid)
-    res = requests.get(todos)
+    res = requests.get(todos, timeout=60)
     tasks = res.json()
     l_task = []
     for task in tasks:

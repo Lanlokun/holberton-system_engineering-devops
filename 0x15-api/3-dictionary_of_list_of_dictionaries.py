@@ -8,14 +8,14 @@ import sys
 if __name__ == "__main__":
     url = 'https://jsonplaceholder.typicode.com/'
     user = '{}users'.format(url)
-    res = requests.get(user)
+    res = requests.get(user, timeout=60)
     json_o = res.json()
     d_task = {}
     for user in json_o:
         name = user.get('username')
         userid = user.get('id')
         todos = '{}todos?userId={}'.format(url, userid)
-        res = requests.get(todos)
+        res = requests.get(todos, timeout=60)
         tasks = res.json()
         l_task = []
         for task in tasks:
